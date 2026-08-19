@@ -1,0 +1,5 @@
+# Copy to terraform.tfvars to override defaults.
+# The defaults match the project; only needed if something changes.
+
+# domain      = "componentconceptsinc.com"
+# github_repo = "BigRedDoge/ComponentConceptsInc"

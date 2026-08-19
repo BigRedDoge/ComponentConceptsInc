@@ -1,0 +1,14 @@
+# Terraform working directory
+.terraform/
+.terraform.lock.hcl
+
+# State files — never commit state; it contains account IDs and ARNs.
+# bootstrap/ uses local state intentionally but should not be committed either.
+*.tfstate
+*.tfstate.backup
+
+# Variable overrides may contain sensitive values
+terraform.tfvars
+
+# Plan output files
+*.tfplan
