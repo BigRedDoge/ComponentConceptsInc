@@ -36,6 +36,23 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Diagnostic: print the actual sub claim from the OIDC token so we can
+      # compare it against the IAM trust policy condition.
+      - name: Show OIDC token claims
+        env:
+          AUDIENCE: sts.amazonaws.com
+        run: |
+          TOKEN=$(curl -sH "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${AUDIENCE}" | jq -r .value)
+          echo "$TOKEN" | python3 -c "
+          import base64, json, sys
+          parts = sys.stdin.read().strip().split('.')
+          p = parts[1] + '=' * (4 - len(parts[1]) % 4)
+          claims = json.loads(base64.urlsafe_b64decode(p))
+          print('sub:', claims.get('sub'))
+          print('aud:', claims.get('aud'))
+          "
+
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
