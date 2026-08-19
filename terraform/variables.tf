@@ -5,7 +5,7 @@ variable "domain" {
 }
 
 variable "github_repo" {
-  description = "GitHub repository identifier for OIDC sub claims. Includes numeric org and repo IDs that GitHub appends to prevent sub-claim hijacking after renames."
+  description = "GitHub repository in org/repo format. Used to scope the OIDC deploy role trust policy."
   type        = string
-  default     = "BigRedDoge@23642952/ComponentConceptsInc@1339580913"
+  default     = "BigRedDoge/ComponentConceptsInc"
 }

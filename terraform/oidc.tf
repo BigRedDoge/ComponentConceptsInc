@@ -78,8 +78,13 @@ resource "aws_iam_role_policy" "deploy" {
 
 # ── Terraform CI role ─────────────────────────────────────────────────────────
 # Used by terraform.yml for plan (pull requests) and apply (main).
-# StringEquals with multiple sub values acts as OR — this allows both event
-# types from this exact repo and nothing else.
+# StringEquals with multiple sub values acts as OR — this allows only these
+# event types from this exact repo and nothing else.
+#
+# The apply job sets `environment: production`, and GitHub swaps the ref-based
+# sub claim for an environment-based one whenever a job references an
+# environment. That job therefore needs the environment sub, not the branch
+# sub — the branch entry below covers plan on main and workflow_dispatch.
 
 data "aws_iam_policy_document" "terraform_ci_assume" {
   statement {
@@ -103,6 +108,7 @@ data "aws_iam_policy_document" "terraform_ci_assume" {
       values = [
         "repo:${var.github_repo}:ref:refs/heads/main",
         "repo:${var.github_repo}:pull_request",
+        "repo:${var.github_repo}:environment:production",
       ]
     }
   }
