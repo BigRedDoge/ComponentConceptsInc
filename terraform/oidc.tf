@@ -49,9 +49,9 @@ resource "aws_iam_role" "deploy" {
 
 data "aws_iam_policy_document" "deploy" {
   statement {
-    sid     = "S3Objects"
-    effect  = "Allow"
-    actions = ["s3:PutObject", "s3:DeleteObject"]
+    sid       = "S3Objects"
+    effect    = "Allow"
+    actions   = ["s3:PutObject", "s3:DeleteObject"]
     resources = ["${aws_s3_bucket.site.arn}/*"]
   }
 
