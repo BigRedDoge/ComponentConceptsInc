@@ -28,6 +28,7 @@ jobs:
         with:
           role-to-assume: ${{ vars.AWS_TERRAFORM_ROLE_ARN }}
           aws-region: us-east-1
+          audience: sts.amazonaws.com
 
       - name: terraform init
         run: terraform init
@@ -85,6 +86,7 @@ jobs:
         with:
           role-to-assume: ${{ vars.AWS_TERRAFORM_ROLE_ARN }}
           aws-region: us-east-1
+          audience: sts.amazonaws.com
 
       - name: terraform init
         run: terraform init
