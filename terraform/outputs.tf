@@ -22,3 +22,8 @@ output "deploy_role_arn" {
   description = "IAM role ARN for GitHub Actions OIDC — set as AWS_ROLE_ARN in deploy.yml"
   value       = aws_iam_role.deploy.arn
 }
+
+output "terraform_role_arn" {
+  description = "IAM role ARN for Terraform CI — set as AWS_TERRAFORM_ROLE_ARN in terraform.yml"
+  value       = aws_iam_role.terraform_ci.arn
+}

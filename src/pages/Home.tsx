@@ -14,8 +14,8 @@ const CAPABILITIES = [
     body: 'Components engineered to withstand the vibration, temperature swings, and duty cycles of revenue-service vehicles.',
   },
   {
-    heading: 'Direct manufacturer support',
-    body: 'No distributors in the chain. Spec questions, custom requirements, and replacement orders go straight to the team that builds the parts.',
+    heading: 'Custom specification work',
+    body: 'Form, fit, and function matched to your fleet. Drawings and wiring documentation included with every custom order.',
   },
   {
     heading: 'Fast replacement supply',
@@ -56,7 +56,7 @@ export function Home() {
                 style={{ '--stagger-index': 2 } as React.CSSProperties}
               >
                 {company.legalName} manufactures door chimes, fire alarm switches, and interior
-                lighting for transit fleets. Five proven products, direct from the manufacturer.
+                lighting for transit fleets.
               </p>
               <div
                 className="reveal flex flex-wrap gap-3"

@@ -1,6 +1,6 @@
-# Terraform working directory
+# Terraform working directory — do NOT ignore .terraform.lock.hcl;
+# it pins provider versions and must be committed for reproducible CI runs.
 .terraform/
-.terraform.lock.hcl
 
 # State files — never commit state; it contains account IDs and ARNs.
 # bootstrap/ uses local state intentionally but should not be committed either.
