@@ -20,7 +20,7 @@ export interface Company {
 // Values below are placeholders and must not be treated as real. See docs/TASKS.md Phase 0.
 export const company: Company = {
   legalName: 'Component Concepts, Inc.',
-  tagline: 'Custom Component Manufacturing in the USA',
+  tagline: 'Custom Component Manufacturing',
   email: 'seancliff01@gmail.com',
   phone: '860-921-1808',
   foundedYear: '1980',

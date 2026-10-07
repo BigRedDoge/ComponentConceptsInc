@@ -6,7 +6,7 @@ import { Photo } from '../components/media/Photo';
 import { useReveal } from '../hooks/use-reveal';
 import { Button } from '../components/ui/button';
 
-// TODO(sean): confirm these steps match how the process actually works
+// TODO(sean): confirm this step matches how the process actually works
 const PROCESS = [
   {
     heading: 'You send the requirement',
@@ -14,15 +14,11 @@ const PROCESS = [
   },
   {
     heading: 'We quote and prototype',
-    body: "We'll scope the work and build a prototype before committing to a production run.",
+    body: "We'll examine your requirements, develop a quote, and prototype if required.",
   },
   {
     heading: 'We build to order',
-    body: 'Made in the USA, in the quantities your project calls for.',
-  },
-  {
-    heading: 'We supply repeat orders',
-    body: 'Ongoing supply once the part is in production, so you have a consistent source.',
+    body: 'Manufacture and stock the components required to satisfy your needs.',
   },
 ];
 
@@ -54,8 +50,8 @@ export function Home() {
                 className="reveal text-[1rem] leading-[1.7] text-body max-w-[55ch] mb-8"
                 style={{ '--stagger-index': 2 } as React.CSSProperties}
               >
-                {company.legalName} builds electrical components for vehicles and equipment, and
-                supplies the parts our customers need.
+                Component Concepts builds custom electrical components in the heavy transit,
+                life safety, and other industrial markets.
               </p>
               <div
                 className="reveal flex flex-wrap gap-3"
@@ -120,7 +116,7 @@ export function Home() {
             us a drawing, a sample part, or a description of what you need.
           </p>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
+          <div className="grid sm:grid-cols-3 gap-x-8 gap-y-8">
             {PROCESS.map((step, i) => (
               <div
                 key={step.heading}
@@ -139,7 +135,7 @@ export function Home() {
       </section>
 
       {/* ── What we make ───────────────────────────────────────── */}
-      <Section eyebrow="Our work" heading="Examples of what we've made" alt>
+      <Section eyebrow="Our work" heading="Examples of what we manufacture" alt>
         <p className="text-[1rem] leading-[1.7] text-body max-w-[60ch] mb-10">
           A sample of the components we've built and supplied. If you need something not
           listed here, ask us.

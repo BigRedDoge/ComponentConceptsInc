@@ -14,7 +14,7 @@ export function Contact() {
             Let's talk about your project.
           </h2>
           <p className="text-[1rem] leading-[1.7] text-white/70 mb-8">
-            Whether you need a spec sheet, a quote, or a conversation about fit for your company,
+            Whether you need a solution, a quote, or a conversation about your requirements,
             reach out and we'll get back to you promptly.
           </p>
         </div>

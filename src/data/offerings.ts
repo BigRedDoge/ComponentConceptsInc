@@ -7,19 +7,19 @@ export interface Offering {
 
 export const offerings: Offering[] = [
   {
-    name: 'Bus door chimes',
+    name: 'Audible indicator',
     icon: Bell,
   },
   {
-    name: 'Fire alarm switches',
+    name: 'Custom switches',
     icon: ShieldAlert,
   },
   {
-    name: 'Train lighting',
+    name: 'Specialty lighting',
     icon: Lightbulb,
   },
   {
-    name: 'Component supply',
+    name: 'Custom component supply',
     icon: Package,
   },
 ];
