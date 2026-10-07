@@ -19,7 +19,7 @@ export function Home() {
             {/* Copy */}
             <div>
               <p className="reveal text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-brand mb-4">
-                Transit vehicle components
+                Electrical components
               </p>
               <h1
                 className="reveal text-[clamp(2.25rem,5vw,3.5rem)] font-medium tracking-[-0.025em] leading-[1.1] text-ink mb-6"
@@ -33,8 +33,8 @@ export function Home() {
                 className="reveal text-[1rem] leading-[1.7] text-body max-w-[55ch] mb-8"
                 style={{ '--stagger-index': 2 } as React.CSSProperties}
               >
-                {company.legalName} builds door chimes, fire alarm switches, and lighting for bus
-                and rail fleets, and supplies components to transit operators.
+                {company.legalName} builds electrical components for vehicles and equipment, and
+                supplies the parts our customers need.
               </p>
               <div
                 className="reveal flex flex-wrap gap-3"
@@ -71,26 +71,17 @@ export function Home() {
       {/* ── What we make ───────────────────────────────────────── */}
       <Section eyebrow="Products" heading="What we make" alt>
         <p className="text-[1rem] leading-[1.7] text-body max-w-[60ch] mb-10">
-          We design and build electrical components for transit vehicles, and supply parts for
-          fleets that need them.
+          We design and build electrical components, and supply parts to customers who need them.
         </p>
-        <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10" ref={offeringsRef}>
-          {offerings.map(({ name, description, icon: Icon }, i) => (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" ref={offeringsRef}>
+          {offerings.map(({ name, icon: Icon }, i) => (
             <div
               key={name}
-              className="reveal flex gap-4"
+              className="reveal bg-white rounded-[10px] p-5 md:p-6"
               style={{ '--stagger-index': i } as React.CSSProperties}
             >
-              <div
-                className="shrink-0 size-11 rounded-[10px] bg-white flex items-center justify-center"
-                aria-hidden="true"
-              >
-                <Icon className="size-5 text-brand" strokeWidth={1.5} />
-              </div>
-              <div>
-                <h3 className="text-[1.125rem] font-medium text-ink mb-2">{name}</h3>
-                <p className="text-[1rem] leading-[1.7] text-body">{description}</p>
-              </div>
+              <Icon className="size-6 text-brand mb-4" strokeWidth={1.5} aria-hidden="true" />
+              <h3 className="text-[1.0625rem] font-medium text-ink">{name}</h3>
             </div>
           ))}
         </div>

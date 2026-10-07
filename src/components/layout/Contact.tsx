@@ -14,8 +14,8 @@ export function Contact() {
             Let's talk about your project.
           </h2>
           <p className="text-[1rem] leading-[1.7] text-body mb-8">
-            Whether you need a spec sheet, a quote, or a direct conversation about fit for your
-            fleet — reach out and we'll get back to you promptly.
+            Whether you need a spec sheet, a quote, or a conversation about fit for your company,
+            reach out and we'll get back to you promptly.
           </p>
         </div>
 
