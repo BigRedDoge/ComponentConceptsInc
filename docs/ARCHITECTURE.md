@@ -85,10 +85,10 @@ and rejected as complexity with no beneficiary.
 
 ### Routing, and what it costs
 
-Two routes: `/` and `/products`. React Router, client-side.
+One route, `/`, plus a catch-all that redirects unknown paths (including the old `/products`) to `/`. React Router, client-side.
 
 This has one infrastructure consequence that is easy to miss. A direct visit to
-`componentconcepts.com/products` asks S3 for an object at that key, which does not
+a non-root path such as `componentconcepts.com/products` asks S3 for an object at that key, which does not
 exist — S3 returns 403 (not 404, because Block Public Access is on and the OAC-signed
 request gets AccessDenied for a missing key). Without handling, the visitor sees an XML
 error page.
@@ -116,8 +116,7 @@ custom_error_response {
 missing asset during a deploy would be served as `index.html` long after the deploy
 finished.
 
-There are no per-product detail pages. Each product block on `/products` carries an
-anchor ID, which covers deep-linking a client to a specific part without a third route.
+There are no per-product pages. The site describes product types in prose on the home page.
 
 ## Terraform
 

@@ -10,8 +10,9 @@ before writing code.
 ## What this project is
 
 A small marketing site for Component Concepts, Inc., a manufacturer of transit vehicle
-hardware: bus door chimes, fire alarm switches, and train interior/signal lighting. Five
-products total.
+hardware: bus door chimes, fire alarm switches, train lighting, and component supply.
+The site describes these product types in prose. It does not list individual part numbers
+or specifications.
 
 **The site's job is credibility, not lead generation.** The owner already works directly
 with his clients. This site exists so that when a client, a referral, or a procurement
@@ -25,23 +26,15 @@ Consequences of that, which agents keep getting wrong:
 - **No forms, no backend.** Contact is a `mailto:` link. There is no Lambda, no SES, no
   API Gateway, no serverless function of any kind. If you find yourself adding one, stop.
 - **No e-commerce.** No cart, no pricing, no checkout, no inventory.
-- **No CMS.** Product data is a typed TypeScript array committed to the repo.
-- **No search or filtering.** There are five products.
+- **No CMS.** The product-type descriptions are a typed TypeScript array committed to the repo.
+- **No search or filtering.** There are four product types.
 
 ## Structure
 
-Two routes, and that is the complete set:
+One route, `/`: hero, "What we make" (four product-type blocks), contact. Unknown paths,
+including the old `/products`, redirect to `/`.
 
-| Route | Contents |
-|---|---|
-| `/` | Hero, three-card product teaser, capabilities, contact |
-| `/products` | All five products expanded and stacked, then contact |
-
-**No per-product detail pages.** Each product block on `/products` carries an anchor ID
-(`#cc-1042`) so a client can be deep-linked without adding routes. Unknown paths redirect
-to `/`.
-
-Contact is a shared component rendered at the bottom of both pages.
+Contact is a shared component rendered at the bottom of the page.
 
 ## Non-negotiable constraints
 
@@ -49,7 +42,7 @@ Contact is a shared component rendered at the bottom of both pages.
 |---|---|
 | Framework | Vite + React + TypeScript |
 | Styling | Tailwind v4 (CSS-first `@theme`), shadcn/ui, Lucide icons |
-| Routing | React Router, two routes only. Do not add a third. |
+| Routing | React Router, one route plus the catch-all redirect. |
 | Hosting | Private S3 bucket + CloudFront (OAC), static assets only |
 | DNS | Route 53; registrar stays at GoDaddy |
 | IaC | Terraform, flat files, single environment, no modules, no workspaces |
@@ -58,7 +51,7 @@ Contact is a shared component rendered at the bottom of both pages.
 
 ## Scope discipline
 
-Before adding any dependency, ask whether five products justify it. The answer is
+Before adding any dependency, ask whether four product types justify it. The answer is
 usually no.
 
 Specifically **do not add**: Framer Motion / `motion` / GSAP / AOS (a 20-line
@@ -76,8 +69,8 @@ If a task seems to require one of these, raise it rather than installing it.
   wrap or compose instead.
 - Colors, fonts, and spacing come from the `@theme` tokens in `src/index.css`. Never
   hardcode a hex value or a font family in a component.
-- Product data is the single source of truth in `src/data/products.ts`, typed against
-  `src/types/product.ts`. Content changes are data edits, not JSX edits.
+- The product-type descriptions live in `src/data/offerings.ts`. Content changes are data
+  edits, not JSX edits.
 - Two font weights only: 400 and 500. Never 600 or 700.
 - Accessibility floor, not optional: semantic landmarks, visible keyboard focus,
   `prefers-reduced-motion` respected, real alt text on every photo, AA contrast on all
@@ -96,5 +89,5 @@ specs on a manufacturer's site are a liability, not a rough draft.
 2. `npm run lint` is clean.
 3. Layout holds from 320px to 1920px.
 4. Keyboard-only navigation reaches every interactive element with a visible focus ring.
-5. Direct navigation to `/products` works, not just client-side navigation to it.
+5. Direct navigation to an unknown path such as `/products` redirects to `/`.
 6. No new runtime dependency was added without it being called out.

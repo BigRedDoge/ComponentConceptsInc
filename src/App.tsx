@@ -3,7 +3,6 @@ import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { Contact } from './components/layout/Contact';
 import { Home } from './pages/Home';
-import { Products } from './pages/Products';
 
 function Layout() {
   return (
@@ -12,7 +11,6 @@ function Layout() {
       <main id="main-content" className="flex-1">
         <Routes>
           <Route index element={<Home />} />
-          <Route path="products" element={<Products />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

@@ -80,13 +80,11 @@ white space.
 Photography of the places these parts live does, and it does the credibility work better
 than a generic switch photo would.
 
-Four slots, that's all:
+Two slots now:
 
 | Slot | Subject | Treatment |
 |---|---|---|
 | Home hero | Rail car or bus interior, empty, shot wide | Right half of a two-column hero |
-| Home capabilities | Electronics assembly bench, wiring harness, hands at work | Full-bleed band, `max-h-[380px]` |
-| Products page header | Circuit board or component close-up | Wide banner under the heading |
 | Contact | Optional — transit exterior at a platform | Only if the section looks thin without it |
 
 Sourcing: Unsplash and Pexels are free for commercial use with no attribution required.
@@ -94,52 +92,34 @@ Adobe Stock is worth ~$30 for one or two specific transit interiors if the free 
 look too generic.
 
 Rules: no visible competitor branding, no recognizable faces, no images that imply a
-claim the company can't back. Keep a consistent treatment across all four — similar
+claim the company can't back. Keep a consistent treatment across them — similar
 exposure and a cool-neutral cast — so they read as one set rather than four stock picks.
 
 Technical: WebP, max 1600px wide, target under 150KB each. Explicit `width` and `height`
 attributes to prevent layout shift. `loading="lazy"` on everything below the fold, eager
 on the hero. `object-cover` with `rounded-[10px]`.
 
-Product cards use flat icon tiles on `--color-surface` — a Lucide icon at 40% opacity,
-centered, aspect-ratio 16/10. Consistent across all five, so nothing reads as a missing
-image.
+The "What we make" blocks use a small white icon tile (Lucide icon) beside the name and
+description, on the `--color-surface` section background.
 
 ## Layout
 
-Two routes. Contact is a shared section at the bottom of both.
+One route. Contact is a shared section at the bottom.
 
 **`/` — Home**
 ```
 Header (sticky)
 Hero            two-column: copy left, photo right
-Product teaser  three cards, "View all products" link to /products
-Capabilities    full-bleed photo band + two-column prose
+What we make    intro line + four icon/name/description blocks, two columns
 Contact         shared component
 Footer
 ```
-
-**`/products` — Products**
-```
-Header (sticky)
-Page heading + banner photo
-Five product blocks, stacked, all expanded:
-  icon tile | name, part number, category, description, spec table
-Contact         shared component
-Footer
-```
-
-No per-product detail pages. Five products stacked on one page is faster to scan than
-five clicks, and a client can be linked to `#cc-1042` directly if needed — anchor IDs on
-each block cover the deep-link case without the routing.
 
 Container `max-w-[72rem]`, `px-6` mobile / `px-8` desktop. Section padding
 `py-20` desktop, `py-14` mobile. Sections alternate white and `--color-surface`; separate
 with background change, not rules.
 
-Grid: three columns desktop, two at tablet, one under 640px. Product blocks on
-`/products` are always full width with the icon tile beside the content, stacking under
-768px.
+Grid: two columns from 640px, one below.
 
 ## Motion
 

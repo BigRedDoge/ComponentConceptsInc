@@ -1,6 +1,6 @@
 # Component Concepts, Inc. — Website
 
-Static marketing site for Component Concepts, Inc. Five products, two pages, no backend.
+Static marketing site for Component Concepts, Inc. One page, no backend.
 
 Built with Vite + React + TypeScript + Tailwind. Hosted on S3 behind CloudFront in a
 dedicated AWS account, provisioned with Terraform, deployed by GitHub Actions.
@@ -30,15 +30,12 @@ npm run typecheck
 
 ## Editing product content
 
-All five products live in `src/data/products.ts`, typed against
-`src/types/product.ts`. Company details (address, phone, email, founding year) live in
-`src/data/company.ts`. Neither requires touching a component.
+The "What we make" blocks (name, description, icon) live in `src/data/offerings.ts`.
+Company details (address, phone, email, founding year) live in `src/data/company.ts`.
+Neither requires touching a component. Adding a product type is one array entry.
 
-Adding a product is one array entry. Nothing else needs to change — the teaser cards,
-the expanded blocks, the icon tiles, and the spec tables all derive from the data.
-
-Photos live in `public/images/` and are referenced from `src/data/company.ts`. There are
-four of them and they are environmental, not product shots — see `docs/DESIGN.md`.
+Photos live in `public/images/`. They are environmental, not product shots — see
+`docs/DESIGN.md`.
 
 ## Repository layout
 
@@ -61,36 +58,27 @@ four of them and they are environmental, not product shots — see `docs/DESIGN.
 │
 ├── public/
 │   ├── favicon.svg
-│   └── images/                Four environmental photos, WebP, <150KB each
+│   └── images/                Environmental photos, WebP, <150KB each
 │
 ├── src/
 │   ├── main.tsx               Router setup
 │   ├── App.tsx                Layout shell — Header, Outlet, Contact, Footer
 │   ├── index.css              Tailwind import + @theme design tokens
 │   │
-│   ├── types/
-│   │   └── product.ts         Product + Category types
-│   │
 │   ├── data/
-│   │   ├── products.ts        The five SKUs — single source of truth
+│   │   ├── offerings.ts       The product types shown under "What we make"
 │   │   └── company.ts         Name, email, phone, address, founded
 │   │
 │   ├── pages/
-│   │   ├── Home.tsx           Hero, teaser, capabilities
-│   │   └── Products.tsx       All five products expanded
+│   │   └── Home.tsx           Hero, what we make
 │   │
 │   ├── components/
 │   │   ├── ui/                shadcn-generated. Do not hand-edit.
 │   │   ├── layout/
-│   │   │   ├── Header.tsx     Wordmark, nav links, mobile Sheet
+│   │   │   ├── Header.tsx     Wordmark, contact button
 │   │   │   ├── Footer.tsx
-│   │   │   ├── Contact.tsx    Shared — renders at the bottom of both pages
+│   │   │   ├── Contact.tsx    Shared — renders at the bottom of the page
 │   │   │   └── Section.tsx    Shared shell: eyebrow, heading, alt background
-│   │   ├── product/
-│   │   │   ├── ProductCard.tsx    Teaser card, home page
-│   │   │   ├── ProductBlock.tsx   Full expanded block, products page
-│   │   │   ├── IconTile.tsx       Flat category tile in place of a photo
-│   │   │   └── SpecTable.tsx
 │   │   └── media/
 │   │       └── Photo.tsx      Wraps img with explicit dims + lazy loading
 │   │

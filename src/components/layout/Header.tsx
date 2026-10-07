@@ -1,15 +1,8 @@
 import { useEffect, useState } from 'react';
-import { NavLink, Link } from 'react-router';
-import { Menu } from 'lucide-react';
+import { Link } from 'react-router';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/button';
-import { Sheet, SheetContent, SheetTitle, SheetTrigger, SheetClose } from '../ui/sheet';
 import { company } from '../../data/company';
-
-const navLinks = [
-  { to: '/', label: 'Home', end: true },
-  { to: '/products', label: 'Products', end: false },
-];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -48,79 +41,13 @@ export function Header() {
             {company.legalName}
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
-            {navLinks.map(({ to, label, end }) => (
-              <NavLink
-                key={to}
-                to={to}
-                end={end}
-                className={({ isActive }) =>
-                  cn(
-                    'px-3 py-1.5 rounded-md text-[0.875rem] font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
-                    isActive
-                      ? 'text-brand-text'
-                      : 'text-body hover:text-ink',
-                  )
-                }
-              >
-                {label}
-              </NavLink>
-            ))}
-          </nav>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
+          {/* CTA */}
+          <div>
             <Button asChild size="sm" className="bg-brand hover:bg-brand-hover text-white active:scale-[0.98] transition-transform duration-100">
               <a href="#contact">Contact</a>
             </Button>
           </div>
 
-          {/* Mobile menu */}
-          <div className="md:hidden">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  aria-label="Open navigation menu"
-                  className="text-ink hover:bg-surface"
-                >
-                  <Menu className="size-5" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-64 bg-white border-line">
-                <SheetTitle className="sr-only">Navigation</SheetTitle>
-                <nav className="flex flex-col gap-1 mt-8" aria-label="Mobile navigation">
-                  {navLinks.map(({ to, label, end }) => (
-                    <SheetClose asChild key={to}>
-                      <NavLink
-                        to={to}
-                        end={end}
-                        className={({ isActive }) =>
-                          cn(
-                            'px-4 py-2.5 rounded-md text-[0.9375rem] font-medium transition-colors duration-150',
-                            isActive
-                              ? 'text-brand-text bg-brand-tint'
-                              : 'text-body hover:text-ink hover:bg-surface',
-                          )
-                        }
-                      >
-                        {label}
-                      </NavLink>
-                    </SheetClose>
-                  ))}
-                  <div className="mt-4 px-4">
-                    <SheetClose asChild>
-                      <Button asChild className="w-full bg-brand hover:bg-brand-hover text-white">
-                        <a href="#contact">Contact</a>
-                      </Button>
-                    </SheetClose>
-                  </div>
-                </nav>
-              </SheetContent>
-            </Sheet>
-          </div>
         </div>
       </header>
     </>
