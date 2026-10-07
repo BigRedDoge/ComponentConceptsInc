@@ -89,26 +89,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* ── What we make ───────────────────────────────────────── */}
-      <Section eyebrow="Our work" heading="Examples of what we've made" alt>
-        <p className="text-[1rem] leading-[1.7] text-body max-w-[60ch] mb-10">
-          A sample of the components we've built and supplied. If you need something not
-          listed here, ask us.
-        </p>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" ref={offeringsRef}>
-          {offerings.map(({ name, icon: Icon }, i) => (
-            <div
-              key={name}
-              className="reveal bg-white rounded-[10px] p-5 md:p-6"
-              style={{ '--stagger-index': i } as React.CSSProperties}
-            >
-              <Icon className="size-6 text-brand mb-4" strokeWidth={1.5} aria-hidden="true" />
-              <h3 className="text-[1.0625rem] font-medium text-ink">{name}</h3>
-            </div>
-          ))}
-        </div>
-      </Section>
-
       {/* ── Custom manufacturing ──────────────────────────────────── */}
       <section className="bg-white py-14 md:py-20" ref={customRef}>
         <div className="max-h-[380px] overflow-hidden bg-surface mb-14 md:mb-20">
@@ -157,6 +137,26 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── What we make ───────────────────────────────────────── */}
+      <Section eyebrow="Our work" heading="Examples of what we've made" alt>
+        <p className="text-[1rem] leading-[1.7] text-body max-w-[60ch] mb-10">
+          A sample of the components we've built and supplied. If you need something not
+          listed here, ask us.
+        </p>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" ref={offeringsRef}>
+          {offerings.map(({ name, icon: Icon }, i) => (
+            <div
+              key={name}
+              className="reveal bg-white rounded-[10px] p-5 md:p-6"
+              style={{ '--stagger-index': i } as React.CSSProperties}
+            >
+              <Icon className="size-6 text-brand mb-4" strokeWidth={1.5} aria-hidden="true" />
+              <h3 className="text-[1.0625rem] font-medium text-ink">{name}</h3>
+            </div>
+          ))}
+        </div>
+      </Section>
     </>
   );
 }
