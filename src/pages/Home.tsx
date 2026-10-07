@@ -86,17 +86,7 @@ export function Home() {
       </section>
 
       {/* ── Custom manufacturing ──────────────────────────────────── */}
-      <section className="bg-white py-14 md:py-20" ref={customRef}>
-        <div className="max-h-[380px] overflow-hidden bg-surface mb-14 md:mb-20">
-          <Photo
-            src="/images/capabilities.webp"
-            alt="Electronics assembly bench with wiring harnesses and component boards"
-            width={1600}
-            height={480}
-            className="w-full max-h-[380px] object-cover"
-          />
-        </div>
-
+      <section className="bg-white pt-14 pb-14 md:pt-20 md:pb-20" ref={customRef}>
         <div className="max-w-[72rem] mx-auto px-6 md:px-8">
           <p className="reveal text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-brand mb-3">
             Custom manufacturing
@@ -133,6 +123,17 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      {/* Photo break */}
+      <div className="max-h-[380px] overflow-hidden bg-surface">
+        <Photo
+          src="/images/capabilities.webp"
+          alt="Electronics assembly bench with wiring harnesses and component boards"
+          width={1600}
+          height={480}
+          className="w-full max-h-[380px] object-cover"
+        />
+      </div>
 
       {/* ── What we make ───────────────────────────────────────── */}
       <Section eyebrow="Our work" heading="Examples of what we manufacture" alt>
