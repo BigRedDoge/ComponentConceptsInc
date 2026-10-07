@@ -6,9 +6,30 @@ import { Photo } from '../components/media/Photo';
 import { useReveal } from '../hooks/use-reveal';
 import { Button } from '../components/ui/button';
 
+// TODO(sean): confirm these steps match how the process actually works
+const PROCESS = [
+  {
+    heading: 'You send the requirement',
+    body: 'A drawing, a sample part, or a description of what you need.',
+  },
+  {
+    heading: 'We quote and prototype',
+    body: "We'll scope the work and build a prototype before committing to a production run.",
+  },
+  {
+    heading: 'We build to order',
+    body: 'Made in the USA, in the quantities your project calls for.',
+  },
+  {
+    heading: 'We supply repeat orders',
+    body: 'Ongoing supply once the part is in production, so you have a consistent source.',
+  },
+];
+
 export function Home() {
   const heroRef = useReveal<HTMLDivElement>();
   const offeringsRef = useReveal<HTMLDivElement>();
+  const customRef = useReveal<HTMLDivElement>();
 
   return (
     <>
@@ -69,9 +90,10 @@ export function Home() {
       </section>
 
       {/* ── What we make ───────────────────────────────────────── */}
-      <Section eyebrow="Products" heading="What we make" alt>
+      <Section eyebrow="Our work" heading="Examples of what we've made" alt>
         <p className="text-[1rem] leading-[1.7] text-body max-w-[60ch] mb-10">
-          We design and build electrical components, and supply parts to customers who need them.
+          A sample of the components we've built and supplied. If you need something not
+          listed here, ask us.
         </p>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" ref={offeringsRef}>
           {offerings.map(({ name, icon: Icon }, i) => (
@@ -86,6 +108,55 @@ export function Home() {
           ))}
         </div>
       </Section>
+
+      {/* ── Custom manufacturing ──────────────────────────────────── */}
+      <section className="bg-white py-14 md:py-20" ref={customRef}>
+        <div className="max-h-[380px] overflow-hidden bg-surface mb-14 md:mb-20">
+          <Photo
+            src="/images/capabilities.webp"
+            alt="Electronics assembly bench with wiring harnesses and component boards"
+            width={1600}
+            height={480}
+            className="w-full max-h-[380px] object-cover"
+          />
+        </div>
+
+        <div className="max-w-[72rem] mx-auto px-6 md:px-8">
+          <p className="reveal text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-brand mb-3">
+            Custom manufacturing
+          </p>
+          <h2
+            className="reveal text-[clamp(1.75rem,3.5vw,2.5rem)] font-medium tracking-[-0.02em] text-ink mb-6"
+            style={{ '--stagger-index': 1 } as React.CSSProperties}
+          >
+            Built to order.
+          </h2>
+          <p
+            className="reveal text-[1rem] leading-[1.7] text-body max-w-[60ch] mb-10 md:mb-14"
+            style={{ '--stagger-index': 2 } as React.CSSProperties}
+          >
+            {/* TODO(sean): confirm this is how the process actually works */}
+            Most of what we build starts with a customer's requirement, not a catalog. Send
+            us a drawing, a sample part, or a description of what you need.
+          </p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
+            {PROCESS.map((step, i) => (
+              <div
+                key={step.heading}
+                className="reveal"
+                style={{ '--stagger-index': i + 3 } as React.CSSProperties}
+              >
+                <p className="text-[0.75rem] font-medium text-brand mb-2">
+                  {String(i + 1).padStart(2, '0')}
+                </p>
+                <h3 className="text-[1rem] font-medium text-ink mb-2">{step.heading}</h3>
+                <p className="text-[1rem] leading-[1.7] text-body">{step.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }
